@@ -1,0 +1,9 @@
+<h1>Meet the trainers</h1>
+
+<%= link_to "Pokédex", root_path %>
+
+<% @trainers.each do |trainer| %>
+  <p><%= trainer.name %> - <%= trainer.age %></p>
+  <%= cl_image_tag trainer.photo.key %>
+  <%= link_to "Show", trainer_path(trainer) %>
+<% end %>

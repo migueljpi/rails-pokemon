@@ -1,0 +1,9 @@
+<h1>A wild <%= @pokemon.name %> appears!</h1>
+
+<%= link_to "Pokédex", root_path %>
+
+<p>Name - <%= @pokemon.name %></p>
+
+<p>Element type - <%= @pokemon.element_type %></p>
+
+<%= cl_image_tag @pokemon.photo.key %>

@@ -1,0 +1,9 @@
+<h1><%= @trainer.name %> is going to catch 'em all!</h1>
+
+<%= link_to "Trainers", trainers_path %>
+
+<% @trainer.pokeballs.each do |pokeball| %>
+  <p><%= pokeball.pokemon.name %></p>
+  <p><%= pokeball.pokemon.element_type %>
+  <%= cl_image_tag pokeball.pokemon.photo.key %>
+<% end %>
