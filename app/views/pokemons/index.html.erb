@@ -1,9 +1,17 @@
-<h1>Welcome to the Pokedex!</h1>
 
-<%= link_to "Show all trainers", trainers_path %>
-
-<% @pokemons.each do |pokemon| %>
-  <p><%= pokemon.name %> - <%= pokemon.element_type %></p>
-  <%= cl_image_tag pokemon.photo.key %>
-  <%= link_to "Show", pokemon_path(pokemon) %>
-<% end %>
+<div class="container">
+  <div class="header">
+    <h1>Welcome to the Pokédex</h1>
+    <%= link_to "Trainers", trainers_path %>
+    <%= link_to "Random Pokemon", random_pokemons_path %>
+  </div>
+  <%= form_tag pokemons_path, method: :get, class: "d-flex mb-3" do %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Pokemon" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+  <div class="grid">
+	  <% @pokemons.each do |pokemon| %>
+	    <%= render pokemon %>
+	  <% end %>
+  </div>
+</div>

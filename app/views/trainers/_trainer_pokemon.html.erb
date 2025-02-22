@@ -1,0 +1,10 @@
+<div class="trainer-pokemon-card" id="trainer-show">
+  <%= cl_image_tag pokeball.pokemon.photo.key %>
+  <h2><%= pokeball.pokemon.name %></h2>
+  <span class="element-type"><%= pokeball.pokemon.element_type.capitalize %> </span>
+  <p> Caught on: <%= pokeball.caught_on.strftime("%B, %d %y") %> at <%= pokeball.location %></p>
+
+  <button>
+    <%= link_to "Release", trainer_pokeball_path(@trainer, pokeball), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger delete-button" %>
+  </button>
+</div>

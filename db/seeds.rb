@@ -28,7 +28,7 @@ brock.photo.attach(io: URI.open('https://upload.wikimedia.org/wikipedia/en/7/71/
 puts "Brock is on the scene!"
 
 puts 'Creating pokemons...'
-response = URI.open('https://pokeapi.co/api/v2/pokemon?limit=50').read
+response = URI.open('https://pokeapi.co/api/v2/pokemon?limit=151').read
 results = JSON.parse(response)['results']
 results.each do |result|
   info = JSON.parse(URI.open(result['url']).read)

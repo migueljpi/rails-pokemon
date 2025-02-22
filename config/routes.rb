@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "pokemons/index"
+  # get "pokemons/index"
   # root to: "pages#home"
   # # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,9 +14,21 @@ Rails.application.routes.draw do
   # # Defines the root path route ("/")
   # # root "posts#index"
 
-  get "/", to: "pokemons#index", as: :root
-  get "/pokemons/:id", to: "pokemons#show", as: :pokemon
+  # get "/trainers", to: "trainers#index", as: :trainers
+  # get "/trainers/new", to: "trainers#new", as: :new_trainer
+  # get "/trainers/:id", to: "trainers#show", as: :trainer
+  # post "/trainers/create", to: "trainers#create", as: :create_trainer
 
-  get "/trainers", to: "trainers#index", as: :trainers
-  get "/trainers/:id", to: "trainers#show", as: :trainer
+  root to: "pokemons#index", as: :root
+  resources :pokemons, only: [:show, :index] do
+    resources :pokeballs, only: [:create]
+    collection do
+      get :random
+    end
+  end
+
+  resources :trainers, only: [:index, :new,:show, :create] do
+    resources :pokeballs, only: [:destroy]
+  end
+
 end

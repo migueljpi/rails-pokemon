@@ -1,0 +1,6 @@
+<%= simple_form_for @trainer, html: {multipart: true} do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :photo %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

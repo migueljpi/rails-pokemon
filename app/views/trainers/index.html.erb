@@ -1,9 +1,16 @@
-<h1>Meet the trainers</h1>
+<div class="container">
+  <div class="header">
+    <%= link_to "< Pokédex", root_path %>
+    <h1>Meet the trainers</h1>
+  </div>
 
-<%= link_to "Pokédex", root_path %>
+  <div class="grid">
+    <% @trainers.each do |trainer| %>
+      <%= render "trainer", trainer: trainer %>
+    <% end %>
+  </div>
 
-<% @trainers.each do |trainer| %>
-  <p><%= trainer.name %> - <%= trainer.age %></p>
-  <%= cl_image_tag trainer.photo.key %>
-  <%= link_to "Show", trainer_path(trainer) %>
-<% end %>
+  <div>
+    <%= link_to "New Trainer", new_trainer_path %>
+  </div>
+</div>

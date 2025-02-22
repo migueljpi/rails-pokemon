@@ -1,9 +1,27 @@
-<h1><%= @trainer.name %> is going to catch 'em all!</h1>
+<div class="container">
+  <div class="header">
+    <%= link_to "< Trainers", trainers_path %>
+    <h1><%= @trainer.name %> is going to catch 'em all!</h1>
+  </div>
+  <div class="two-columns">
+    <div class="trainer-details">
+      <%= render "trainer", trainer: @trainer %>
+    </div>
+    <div class="grid">
+      <% @trainer.pokeballs.each do |pokeball| %>
+        <%= render "trainer_pokemon", pokeball: pokeball %>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to "Trainers", trainers_path %>
+</div>
 
-<% @trainer.pokeballs.each do |pokeball| %>
-  <p><%= pokeball.pokemon.name %></p>
-  <p><%= pokeball.pokemon.element_type %>
-  <%= cl_image_tag pokeball.pokemon.photo.key %>
-<% end %>
+
+
+
+<%# COULD ALSO BE, BECAUSE WE HAVE "THROUGH" %>
+<%# @trainer.pokemons.each do |pokemon| %>
+  <%# pokemon.name %>
+  <%# pokemon.element_type %>
+  <%# cl_image_tag pokemon.photo.key %>
+<%# end %>

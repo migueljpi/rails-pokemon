@@ -1,9 +1,14 @@
-<h1>A wild <%= @pokemon.name %> appears!</h1>
 
-<%= link_to "Pokédex", root_path %>
+<div class="header">
+  <%= link_to "< Pokédex", root_path %>
+</div>
 
-<p>Name - <%= @pokemon.name %></p>
-
-<p>Element type - <%= @pokemon.element_type %></p>
-
-<%= cl_image_tag @pokemon.photo.key %>
+<div class="two-columns">
+  <div class="">
+    <h3 class="">You hear a rustle in the tall grass... a wild <%= @pokemon.name %> appears!</h3>
+    <%= render "pokemon", pokemon: @pokemon %>
+  </div>
+  <div class="">
+    <%= render "form" %>
+  </div>
+</div>
